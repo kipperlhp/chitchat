@@ -10,7 +10,7 @@ const StyledInput = styled.input`
   display: block;
   width: 100%;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   outline: 0;
   border: 0.125rem solid ${ifProp('invalid', palette('error', 0), palette('primary', 0))};
   caret-color: ${ifProp('invalid', palette('error', 0), palette('primary', 0))};

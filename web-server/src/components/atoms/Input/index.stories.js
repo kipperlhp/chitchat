@@ -10,7 +10,7 @@ storiesOf('Atoms|Input', module)
     <Input placeholder="Enter your Text" />
   ))
   .add('readOnly', () => (
-    <Input readOnly placeholder="This is readOnly"/>
+    <Input readOnly placeholder="This is readOnly" />
   ))
   .add('invalid', () => (
     <Input invalid />

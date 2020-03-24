@@ -16,7 +16,7 @@ const StyledButton = styled.button`
     background: ${ifProp('disabled', palette('grayscale', 4), palette('primary', 0))};
   }
   :active {
-    background: ${palette('primary', 2)};
+    background: ${ifProp('disabled', palette('grayscale', 4), palette('primary', 2))};
   }
   ${ifProp('fullWidth', css`
     display: block;
