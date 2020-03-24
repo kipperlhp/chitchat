@@ -9,7 +9,7 @@ const theme = {
     error: ['#FF6666'],
   },
   sizes: {
-    maxWidth: '1280px',
+    maxWidth: '1024px',
     mobile: '480px',
     tablet: '768px',
     desktop: '1024px',
