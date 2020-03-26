@@ -14,6 +14,7 @@ const StyledInput = styled.input`
   outline: 0;
   border: 0.125rem solid ${ifProp('invalid', palette('error', 0), palette('primary', 0))};
   caret-color: ${ifProp('invalid', palette('error', 0), palette('primary', 0))};
+  background: ${ifProp('readOnly', palette('grayscale', 4), 'unset')};
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

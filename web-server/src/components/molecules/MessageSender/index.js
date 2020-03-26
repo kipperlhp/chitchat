@@ -13,8 +13,15 @@ const MessageSender = ({ onSend, ...props }) => {
         placeholder="Enter your message..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyUp={(e) => {
+          if (message && e.keyCode === 13) {
+            setMessage('')
+            return onSend(message)
+          }
+          return false
+        }}
       />
-      <Flex ml="0.125rem">
+      <Flex ml="0.25rem">
         <Button
           onClick={() => {
             setMessage('')

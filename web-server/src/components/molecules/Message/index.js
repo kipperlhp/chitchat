@@ -48,7 +48,7 @@ const Message = ({ message, align, ...props }) => {
       </Flex>
       <Flex justifyContent="flex-end">
         <Text variant="body3" palette="grayscale" paletteIndex={align === 'left' ? 2 : 1}>
-          {createdAt.slice(0, 19)}
+          {createdAt.slice(11, 19)}
         </Text>
       </Flex>
     </StyledBox>
@@ -61,7 +61,7 @@ Message.propTypes = {
       name: PropTypes.string,
     }),
     content: PropTypes.string,
-    createdAt: PropTypes.object,
+    createdAt: PropTypes.string,
   }),
   align: PropTypes.oneOf(['left', 'right']),
 }
