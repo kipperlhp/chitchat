@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { palette, size } from 'styled-theme'
 import { Box, Flex } from '@rebass/grid'
+import socketIOClient from 'socket.io-client'
+import Text from './components/atoms/Text'
+import Chatroom from './components/Organisms/Chatroom'
+import config from './config'
 import './App.css'
 
 const AppContainer = styled(Flex)`
@@ -14,6 +18,7 @@ const AppContainer = styled(Flex)`
 
 const Header = styled.header`
   background: ${palette('primary', 0)};
+  padding: 0.5rem 1rem;
   position: fixed;
   height: 30vh;
   top: 0;
@@ -33,13 +38,43 @@ const ContentBox = styled(Box)`
 `
 
 const App = () => {
+  const [webSocket, setWebSocket] = useState(null)
+  const [messages, setMessages] = useState([])
+
+  useEffect(() => {
+    if (!webSocket) {
+      const { apiUrl } = config
+      const socket = socketIOClient(apiUrl)
+      setWebSocket(socket)
+    } else if (!webSocket.hasListeners('receiveMessage')) {
+      webSocket.on('receiveMessage', (message) => {
+        setMessages((originalMessages) => {
+          // must use this callback to get the original messages
+          // instead of getting the state.messages directly
+          // because state.messages are not updated within useEffect hook
+          const newMessages = originalMessages.concat(message)
+          return newMessages
+        })
+      })
+    }
+  }, [webSocket])
+
   return (
     <AppContainer>
       <Header>
-        <h2>Chitchat</h2>
+        <Text variant="h1" bold>Chitchat</Text>
       </Header>
       <ContentBox>
-        Coming Soon...
+        <Chatroom
+          userId={webSocket ? webSocket.id : null}
+          messages={messages}
+          onMessageSend={(message) => {
+            webSocket.emit('sendMessage', message)
+          }}
+          onUserNameSave={(userName) => {
+            webSocket.emit('updateUserName', userName)
+          }}
+        />
       </ContentBox>
     </AppContainer>
   )
