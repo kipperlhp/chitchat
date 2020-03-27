@@ -16,4 +16,9 @@ const theme = {
   }
 }
 
+theme.breakpoints = [
+  theme.sizes.mobile,
+  theme.sizes.tablet,
+]
+
 export default theme
