@@ -49,7 +49,7 @@ const Message = ({ message, align, ...props }) => {
       </Flex>
       <Flex justifyContent="flex-end">
         <Text variant="body3" palette="grayscale" paletteIndex={align === 'left' ? 2 : 1}>
-          {createdAt.slice(11, 19)}
+          {new Date(createdAt).toLocaleTimeString('en-US')}
         </Text>
       </Flex>
     </StyledBox>
