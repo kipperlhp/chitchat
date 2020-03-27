@@ -12,6 +12,16 @@ const ChatHistoryContainer = styled(Flex)`
   overflow: auto;
 `
 
+const MessageWrapper = styled(Flex)`
+  overflow-anchor: none;
+  margin-bottom: 0.25rem;
+`
+
+const AnchorDiv = styled.div`
+  min-height: 1px;
+  overflow-anchor: auto;
+`
+
 const Chatroom = ({ messages, userId, onMessageSend, onUserNameSave }) => {
   return (
     <Flex flexDirection="column" style={{ height: '100%' }}>
@@ -26,16 +36,17 @@ const Chatroom = ({ messages, userId, onMessageSend, onUserNameSave }) => {
         {messages.map((message, i) => {
           const isMyMessage = (message.sender.id === userId)
           return (
-            <Flex key={`message-${i}`} mb="0.25rem">
+            <MessageWrapper key={`message-${i}`}>
               {isMyMessage && <Box flex="1 1 0" />}
               <Message
                 message={message}
                 align={isMyMessage ? 'right' : 'left'}
               />
               {isMyMessage || <Box flex="1 1 0" />}
-            </Flex>
+            </MessageWrapper>
           )
         })}
+        <AnchorDiv />
       </ChatHistoryContainer>
       <Box mt="0.5rem">
         <MessageSender onSend={onMessageSend} />
