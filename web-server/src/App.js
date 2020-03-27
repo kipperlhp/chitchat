@@ -28,7 +28,7 @@ const Header = styled.header`
 
 const ContentBox = styled(Box)`
   background: ${palette('grayscale', 5)};
-  box-shadow: 0 17px 50px 0 ${palette('grayscale', 2)}, 0 12px 15px 0 ${palette('grayscale', 2)};
+  box-shadow: 0 1.0625rem 3.125rem 0 ${palette('grayscale', 2)}, 0 0.75rem 0.9375rem 0 ${palette('grayscale', 2)};
   max-width: ${size('maxWidth')};
   width: 100%;
   height: 85%;

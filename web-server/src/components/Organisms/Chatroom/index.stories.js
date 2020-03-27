@@ -9,6 +9,11 @@ const testMessages = [
     createdAt: '2020-03-24T18:50:23.261Z',
   },
   {
+    sender: { id: 0, name: 'SYSTEM' },
+    content: 'Pan Wong joins the chat',
+    createdAt: '2020-03-24T18:50:23.261Z',
+  },
+  {
     sender: { id: 2, name: 'Pan Wong' },
     content: 'Hi?',
     createdAt: '2020-03-24T18:50:23.261Z',
@@ -31,6 +36,11 @@ const testMessages = [
   {
     sender: { id: 1, name: 'Mike Chan' },
     content: 'I am Hungry',
+    createdAt: '2020-03-24T18:50:23.261Z',
+  },
+  {
+    sender: { id: 0, name: 'SYSTEM' },
+    content: 'Gregory joins the chat',
     createdAt: '2020-03-24T18:50:23.261Z',
   },
   {
