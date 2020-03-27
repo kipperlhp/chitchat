@@ -13,7 +13,10 @@ const AppContainer = styled(Flex)`
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 0.5rem 1rem;
+  padding: 4rem 1rem 3rem;
+  @media only screen and (max-width: ${size('mobile')}) {
+    padding: 3.5rem 0 0;
+  }
 `
 
 const Header = styled.header`
@@ -31,7 +34,7 @@ const ContentBox = styled(Box)`
   box-shadow: 0 1.0625rem 3.125rem 0 ${palette('grayscale', 2)}, 0 0.75rem 0.9375rem 0 ${palette('grayscale', 2)};
   max-width: ${size('maxWidth')};
   width: 100%;
-  height: 85%;
+  height: 100%;
   border-radius: 0.25rem;
   padding: 0.5rem;
   z-index: 1;

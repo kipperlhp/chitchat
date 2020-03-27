@@ -39,7 +39,7 @@ const Chatroom = ({ messages, userId, onMessageSend, onUserNameSave }) => {
         <EditableInput
           label="Display Name"
           onSave={onUserNameSave}
-          width={[1, 1 / 2]}
+          width={[1, 2 / 3, 1 / 2]}
         />
       </Flex>
       <ChatHistoryContainer>
