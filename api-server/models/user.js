@@ -1,7 +1,7 @@
 class User {
   constructor(userId, name) {
     this.id = userId
-    this.name = name || userId
+    this.name = name || 'Anonymous'
     this.createdAt = new Date()
   }
 

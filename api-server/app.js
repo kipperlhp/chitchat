@@ -24,8 +24,8 @@ app.get('/', (req, res, next) => {
 io.on('connection', (socket) => {
   const user = new User(socket.id)
   activeUsers.push(user)
-  console.log(`user ${user.name} connected,\ntotal users: ${activeUsers.length}`)
-  const connectionMsg = new Message(systemUser, `user ${user.name} joins the chat,\ntotal users: ${activeUsers.length}`)
+  console.log(`user ${user.id} connected,\ntotal users: ${activeUsers.length}`)
+  const connectionMsg = new Message(systemUser, `${user.name} joins the chat,\ntotal users: ${activeUsers.length}`)
   io.emit('receiveMessage', connectionMsg)
 
   socket.on('sendMessage', (message) => {
@@ -34,13 +34,18 @@ io.on('connection', (socket) => {
   })
 
   socket.on('updateUserName', (newName) => {
-    user.updateName(newName)
+    const oldName = user.name
+    if (oldName !== newName) {
+      user.updateName(newName)
+      const notiMsg = new Message(systemUser, `${oldName} changes the name to '${newName}'`)
+      io.emit('receiveMessage', notiMsg)
+    }
   })
 
   socket.on('disconnect', () => {
     activeUsers = activeUsers.filter((u) => u.id !== user.id)
-    console.log(`user ${user.name} disconnected,\ntotal users: ${activeUsers.length}`)
-    const disconnectionMsg = new Message(systemUser, `user ${user.name} leaves the chat,\ntotal users: ${activeUsers.length}`)
+    console.log(`user ${user.id} disconnected,\ntotal users: ${activeUsers.length}`)
+    const disconnectionMsg = new Message(systemUser, `${user.name} leaves the chat,\ntotal users: ${activeUsers.length}`)
     io.emit('receiveMessage', disconnectionMsg)
   })
 })
