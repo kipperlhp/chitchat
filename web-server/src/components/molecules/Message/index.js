@@ -12,6 +12,7 @@ const StyledBox = styled(Box)`
   padding: 0.5rem;
   position: relative;
   box-shadow: 0 0.125rem 0.125rem ${palette('grayscale', 2)};
+  word-break: break-word;
   ${ifProp({ align: 'left' }, css`
     border-top-left-radius: 0;
     margin-left: 0.75rem;
