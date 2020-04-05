@@ -55,10 +55,10 @@ const Chatroom = ({ messages, userId, onMessageSend, onUserNameSave }) => {
               ) : (
                 <>
                   {isMyMessage && <Box flex="1 1 0" />}
-                    <Message
-                      message={message}
-                      align={isMyMessage ? 'right' : 'left'}
-                    />
+                  <Message
+                    message={message}
+                    align={isMyMessage ? 'right' : 'left'}
+                  />
                   {isMyMessage || <Box flex="1 1 0" />}
                 </>
               )}
