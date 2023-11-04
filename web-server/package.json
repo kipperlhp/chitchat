@@ -10,7 +10,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "5.0.1",
-    "socket.io-client": "^2.5.0",
+    "socket.io-client": "^4.7.2",
     "styled-components": "^5.0.1",
     "styled-theme": "^0.3.3",
     "styled-tools": "^1.7.1"
